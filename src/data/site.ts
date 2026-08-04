@@ -62,8 +62,8 @@ export const HERO_SLIDES: HeroSlide[] = [
 ]
 
 export const CONTACT = {
-  email: 'hello@greenvolt.ai',
-  press: 'press@greenvolt.ai',
+  email: 'official@greenvolt.cc',
+  press: 'official@greenvolt.cc',
   phone: '+1 (415) 555-0142',
   address: 'Singapore · San Francisco · London · Shenzhen',
 } as const
