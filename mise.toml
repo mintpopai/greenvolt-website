@@ -30,8 +30,95 @@ run = "pnpm vite preview"
 description = "类型检查并构建生产产物到 dist/"
 run = ["pnpm vue-tsc --noEmit -p tsconfig.app.json", "pnpm vite build"]
 
+[tasks.image]
+description = "构建站点镜像（根 Dockerfile，mise 多阶段）"
+run = "docker build -f Dockerfile -t greenvolt-website:local ."
+
 # —— 质量 ——
 
 [tasks.lint]
 description = "类型检查（不产出构建物）"
 run = "pnpm vue-tsc --noEmit -p tsconfig.app.json"
+
+# —— 部署 ——
+
+[tasks.up]
+description = "拉起 docker compose 服务（拉 GHCR 已发布镜像）"
+run = "docker compose up -d"
+
+[tasks.down]
+description = "停止并移除 docker compose 服务"
+run = "docker compose down"
+
+# —— 发版 ——
+
+[tasks.release]
+description = "发版：校验 → 写版本号 → 打 tag 推送，由 tag 触发 Release 工作流"
+usage = '''
+arg "[arg1]" help="版本号（如 v0.2.0）或更新说明；只传一个时按形状判定"
+arg "[arg2]" help="更新说明（第一个参数为版本号时使用）"
+'''
+run = '''
+#!/usr/bin/env bash
+set -euo pipefail
+
+arg1="${usage_arg1:-}"
+arg2="${usage_arg2:-}"
+semver_re='^v?[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$'
+
+# 参数按形状消歧：像版本号的当版本号，否则当更新说明
+ver=""
+notes=""
+if [ -n "$arg2" ]; then
+  ver="$arg1"
+  notes="$arg2"
+elif [ -n "$arg1" ]; then
+  if printf '%s' "$arg1" | grep -qE "$semver_re"; then
+    ver="$arg1"
+  else
+    notes="$arg1"
+  fi
+fi
+
+# 一次 fetch 同时供「自动算版本号」与「main 落后检查」复用
+git fetch origin main --tags
+
+if [ -z "$ver" ]; then
+  latest="$(git tag -l --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -1 || true)"
+  if [ -z "$latest" ]; then
+    ver="v0.1.0"
+  else
+    IFS='.' read -r major minor patch <<< "${latest#v}"
+    ver="v${major}.${minor}.$((patch + 1))"
+  fi
+fi
+case "$ver" in v*) ;; *) ver="v${ver}" ;; esac
+
+# 校验：任一不过即中止，绝不打 tag
+printf '%s' "$ver" | grep -qE "$semver_re" || { echo "版本号格式非法：${ver}" >&2; exit 1; }
+[ "$(git rev-parse --abbrev-ref HEAD)" = "main" ] || { echo "只能在 main 分支发版" >&2; exit 1; }
+[ -z "$(git status --porcelain)" ] || { echo "工作区不干净，先提交或清理" >&2; exit 1; }
+if git rev-parse -q --verify "refs/tags/${ver}" >/dev/null; then
+  echo "tag 已存在：${ver}" >&2
+  exit 1
+fi
+[ -z "$(git rev-list HEAD..origin/main)" ] || { echo "本地 main 落后 origin/main，先 pull" >&2; exit 1; }
+
+# 版本号承载在 package.json，先写文件并提交
+pnpm version "${ver#v}" --no-git-tag-version --allow-same-version
+if ! git diff --quiet -- package.json; then
+  git add package.json
+  git commit -m "chore: 发布 ${ver}"
+fi
+
+# 有说明打 annotated tag（注释会置顶到 Release 正文），否则打轻量 tag
+if [ -n "$notes" ]; then
+  git tag -a "$ver" -m "$notes"
+else
+  git tag "$ver"
+fi
+
+git push origin main
+git push origin "$ver"
+echo "已推送 ${ver}，Release 工作流开始运行"
+'''

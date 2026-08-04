@@ -1,0 +1,19 @@
+# 与 Dockerfile 同名共置的忽略文件（BuildKit 优先认它，不再读根 .dockerignore）
+# pattern 相对构建上下文根（= 仓库根）书写
+
+node_modules
+dist
+*.local
+*.log
+*.tsbuildinfo
+
+**/.git
+.github
+.idea
+.claude
+.vscode
+docs
+.DS_Store
+
+# 部署清单不参与镜像构建
+docker-compose.yml
