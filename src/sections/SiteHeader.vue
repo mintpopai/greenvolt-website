@@ -291,7 +291,7 @@ onBeforeUnmount(() => {
   text-align: center;
 }
 
-@media (width < 1180px) {
+@media (max-width: 1179.98px) {
   .brand__text small {
     display: none;
   }
@@ -301,7 +301,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (width < 900px) {
+@media (max-width: 899.98px) {
   .nav {
     display: none;
   }
@@ -311,13 +311,13 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (width < 560px) {
+@media (max-width: 559.98px) {
   .cta {
     display: none;
   }
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   .drawer {
     display: none !important;
   }

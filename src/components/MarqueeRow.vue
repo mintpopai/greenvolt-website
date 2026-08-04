@@ -60,7 +60,8 @@ defineProps<{
   font-weight: 600;
   letter-spacing: 0.08em;
   white-space: nowrap;
-  color: rgb(232 255 246 / 34%);
+  /* 客户名是正文内容不是背景纹理，走 faint 色阶才够 AA；别为了「淡一点」写死更低的透明度 */
+  color: var(--gv-text-faint);
   transition: color var(--gv-dur-fast) var(--gv-ease);
 }
 

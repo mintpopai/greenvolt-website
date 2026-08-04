@@ -200,7 +200,7 @@ function step(direction: 1 | -1) {
   color: var(--gv-text-faint);
 }
 
-@media (width < 720px) {
+@media (max-width: 719.98px) {
   .voices__head {
     flex-direction: column;
     align-items: flex-start;

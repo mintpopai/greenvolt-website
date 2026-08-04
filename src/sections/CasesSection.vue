@@ -217,7 +217,7 @@ function move(direction: 1 | -1) {
   }
 }
 
-@media (width < 900px) {
+@media (max-width: 899.98px) {
   .cases__head {
     flex-direction: column;
     align-items: flex-start;

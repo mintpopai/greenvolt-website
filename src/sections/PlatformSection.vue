@@ -165,7 +165,7 @@ useReveal(() => root.value)
   box-shadow: 0 0 10px rgb(0 224 138 / 60%);
 }
 
-@media (width < 1080px) {
+@media (max-width: 1079.98px) {
   .platform__stage {
     grid-template-columns: 1fr;
     max-width: 560px;

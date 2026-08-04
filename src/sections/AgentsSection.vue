@@ -182,7 +182,7 @@ useReveal(() => root.value)
   color: var(--gv-text-faint);
 }
 
-@media (width < 1024px) {
+@media (max-width: 1023.98px) {
   .agents__grid {
     grid-template-columns: 1fr;
     max-width: 560px;

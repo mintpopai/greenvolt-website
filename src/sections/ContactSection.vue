@@ -368,13 +368,13 @@ async function onSubmit() {
   font-size: var(--gv-size-small);
 }
 
-@media (width < 980px) {
+@media (max-width: 979.98px) {
   .contact__inner {
     grid-template-columns: 1fr;
   }
 }
 
-@media (width < 560px) {
+@media (max-width: 559.98px) {
   .form {
     grid-template-columns: 1fr;
   }

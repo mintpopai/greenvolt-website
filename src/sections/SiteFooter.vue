@@ -169,7 +169,7 @@ const year = new Date().getFullYear()
   border-color: var(--gv-border-lit);
 }
 
-@media (width < 900px) {
+@media (max-width: 899.98px) {
   .footer__inner {
     grid-template-columns: 1fr;
   }

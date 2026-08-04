@@ -117,7 +117,7 @@ useReveal(() => root.value)
   color: var(--gv-text-faint);
 }
 
-@media (width < 860px) {
+@media (max-width: 859.98px) {
   .scale__grid {
     grid-template-columns: 1fr;
     gap: 1.75rem;

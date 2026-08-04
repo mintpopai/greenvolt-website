@@ -361,7 +361,7 @@ onBeforeUnmount(() => clearTimeout(timer))
   }
 }
 
-@media (width < 900px) {
+@media (max-width: 899.98px) {
   .hero {
     padding-block: 7rem 4rem;
   }
