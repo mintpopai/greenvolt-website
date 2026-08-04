@@ -128,6 +128,9 @@ jobs:
           TAG: ${{ github.ref_name }}
           CHANGELOG: ${{ steps.changelog.outputs.changelog }}
         run: |
+          # actions/checkout 检出 tag 时会用 +<commit>:refs/tags/<tag> 覆写本地 ref，
+          # 把 annotated tag 降级成轻量 tag，注释随之丢失；这里强制取回真正的 tag 对象
+          git fetch --force origin "refs/tags/${TAG}:refs/tags/${TAG}"
           : > notes.md
           if [ "$(git cat-file -t "$TAG")" = "tag" ]; then
             git tag -l --format='%(contents)' "$TAG" >> notes.md
