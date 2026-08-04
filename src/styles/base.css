@@ -1,0 +1,180 @@
+/* 全局重置与基础排版 */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--gv-ink-deep);
+  color: var(--gv-text);
+  font-family: var(--gv-font-body);
+  font-size: var(--gv-size-body);
+  line-height: 1.6;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--gv-font-display);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gv-volt);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--gv-volt);
+  color: var(--gv-ink-deep);
+}
+
+/* —— 复用工具类 —— */
+
+.gv-shell {
+  width: 100%;
+  max-width: var(--gv-max);
+  margin-inline: auto;
+  padding-inline: var(--gv-gutter);
+}
+
+.gv-section {
+  position: relative;
+  padding-block: var(--gv-section-y);
+}
+
+/* 锚点跳转时给固定顶栏留出高度，否则章节标题会被压在顶栏底下 */
+section[id] {
+  scroll-margin-top: 104px;
+}
+
+/* 章节眉标：一个发光小点 + 全大写标签 */
+.gv-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--gv-size-micro);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gv-text-mute);
+}
+
+.gv-eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gv-volt);
+  box-shadow: 0 0 12px var(--gv-volt);
+}
+
+/* 巨号标题的「暗层」，与亮色文字并置做深浅分层。
+   比 --gv-text-faint 稍亮：那个色阶是给脚注用的，放到巨号标题上会糊成一片。 */
+.gv-dim {
+  color: rgb(232 255 246 / 32%);
+}
+
+.gv-grad-text {
+  background: var(--gv-grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 滚动进场：默认下沉透明，进入视口后由 useReveal 加 is-revealed */
+.gv-reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity var(--gv-dur-slow) var(--gv-ease),
+    transform var(--gv-dur-slow) var(--gv-ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.gv-reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* 无障碍：仅供读屏，视觉隐藏 */
+.gv-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* 用户要求减少动效时，关闭所有位移与循环动画 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .gv-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

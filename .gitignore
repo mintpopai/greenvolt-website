@@ -1,0 +1,13 @@
+node_modules/
+dist/
+*.local
+*.log
+
+# 本地工程/编辑器配置不入库
+.idea/
+.claude/
+.vscode/
+.DS_Store
+
+# 类型检查缓存
+*.tsbuildinfo

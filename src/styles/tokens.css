@@ -1,0 +1,64 @@
+/* GreenVolt 设计令牌：颜色、排版、间距、圆角、动效时长的唯一来源 */
+
+:root {
+  /* —— 品牌色：深墨绿底 + 荧光绿电流 + 青色副调 —— */
+  --gv-ink: #0a1f1a; /* 深墨绿，区块底色 */
+  --gv-ink-deep: #050d0b; /* 近黑墨绿，页面底色 */
+  --gv-volt: #00e08a; /* 荧光绿，强调 / CTA / 数字 */
+  --gv-aqua: #2dd4bf; /* 青，渐变副色 */
+  --gv-lime: #a8ff60; /* 电光黄绿，渐变高光端 */
+  --gv-mist: #e8fff6; /* 近白偏绿，正文反白 */
+
+  /* —— 文字色阶：全部由 mist 派生，保证深色底上层级清晰 —— */
+  --gv-text: #e8fff6;
+  --gv-text-soft: rgb(232 255 246 / 72%);
+  --gv-text-mute: rgb(232 255 246 / 46%);
+  --gv-text-faint: rgb(232 255 246 / 22%);
+
+  /* —— 玻璃拟态 —— */
+  --gv-glass: rgb(232 255 246 / 4%);
+  --gv-glass-strong: rgb(232 255 246 / 7%);
+  --gv-border: rgb(232 255 246 / 10%);
+  --gv-border-lit: rgb(0 224 138 / 32%);
+
+  /* —— 渐变 —— */
+  --gv-grad-volt: linear-gradient(120deg, var(--gv-volt), var(--gv-aqua));
+  --gv-grad-text: linear-gradient(100deg, var(--gv-mist) 12%, var(--gv-volt) 58%, var(--gv-aqua) 96%);
+
+  /* —— 字体 —— */
+  --gv-font-display: 'Sora Variable', 'Sora', system-ui, sans-serif;
+  --gv-font-body: 'Inter Variable', 'Inter', system-ui, sans-serif;
+
+  /* —— 排版尺度（随视口流体缩放）—— */
+  /* 上界压到 5.25rem，让 Hero 最长的一行（Powering Global Growth）在宽屏上不折行 */
+  --gv-size-mega: clamp(2.6rem, 6vw, 5.25rem);
+  --gv-size-h2: clamp(2rem, 4.4vw, 4rem);
+  --gv-size-h3: clamp(1.35rem, 2vw, 1.85rem);
+  --gv-size-lead: clamp(1rem, 1.25vw, 1.2rem);
+  --gv-size-body: 1rem;
+  --gv-size-small: 0.875rem;
+  --gv-size-micro: 0.75rem;
+
+  /* —— 布局 —— */
+  --gv-max: 1360px;
+  --gv-gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --gv-section-y: clamp(5rem, 11vh, 9.5rem);
+
+  /* —— 圆角 —— */
+  --gv-radius-pill: 999px;
+  --gv-radius-lg: 28px;
+  --gv-radius-md: 18px;
+  --gv-radius-sm: 12px;
+
+  /* —— 动效 —— */
+  --gv-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --gv-dur-fast: 220ms;
+  --gv-dur: 460ms;
+  --gv-dur-slow: 900ms;
+
+  /* —— 层级 —— */
+  --gv-z-backdrop: 0;
+  --gv-z-content: 1;
+  --gv-z-header: 40;
+  --gv-z-preloader: 90;
+}
