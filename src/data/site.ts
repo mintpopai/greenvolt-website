@@ -58,7 +58,6 @@ export const HERO_SLIDES: HeroSlide[] = [
 /** 全站唯一联系方式为邮箱：不列电话、不列办公地点 */
 export const CONTACT = {
   email: 'official@greenvolt.cc',
-  press: 'official@greenvolt.cc',
 } as const
 
 export const FOOTER_LINKS: NavLink[] = [

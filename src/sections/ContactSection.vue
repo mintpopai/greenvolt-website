@@ -92,12 +92,8 @@ async function onSubmit() {
 
         <dl class="contact__facts gv-reveal" style="--reveal-delay: 220ms">
           <div>
-            <dt>General</dt>
+            <dt>Contact</dt>
             <dd><a :href="`mailto:${CONTACT.email}`">{{ CONTACT.email }}</a></dd>
-          </div>
-          <div>
-            <dt>Press</dt>
-            <dd><a :href="`mailto:${CONTACT.press}`">{{ CONTACT.press }}</a></dd>
           </div>
         </dl>
       </div>
@@ -212,7 +208,6 @@ async function onSubmit() {
 
 .contact__facts {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
   margin: 3rem 0 0;
   padding-top: 2rem;
@@ -383,10 +378,6 @@ async function onSubmit() {
 
 @media (max-width: 559.98px) {
   .form {
-    grid-template-columns: 1fr;
-  }
-
-  .contact__facts {
     grid-template-columns: 1fr;
   }
 }
