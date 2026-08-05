@@ -137,6 +137,8 @@ onBeforeUnmount(() => {
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.02em;
+  /* 公司全称较长：禁止折行，否则会把胶囊顶栏撑成两行 */
+  white-space: nowrap;
 }
 
 .brand__text small {
@@ -276,6 +278,20 @@ onBeforeUnmount(() => {
 @media (max-width: 559.98px) {
   .cta {
     display: none;
+  }
+
+  /* 窄屏放不下 1.05rem 的全称，缩一档保证单行 */
+  .brand__text strong {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 399.98px) {
+  /* 极窄屏（≈320px）单行的全称会把顶栏撑出屏幕：放开折行，让它排成两行 */
+  .brand__text strong {
+    font-size: 0.9rem;
+    line-height: 1.15;
+    white-space: normal;
   }
 }
 

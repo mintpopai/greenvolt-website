@@ -9,7 +9,8 @@ export interface NavLink {
 }
 
 export const BRAND = {
-  name: 'GreenVolt',
+  /** 对外显示的公司全称，顶栏、页脚、法务页、版权行统一用它 */
+  name: 'GreenVolt Connect Service',
   tagline: 'Power global advertising with AI and convert intelligence into growth',
   /** 顶栏用的短描述：顶栏高度只容得下一行，长 tagline 会折行撑破胶囊条 */
   headerNote: 'AI for global advertising',

@@ -55,7 +55,10 @@ const year = new Date().getFullYear()
 
 .footer__wordmark {
   font-family: var(--gv-font-display);
-  font-size: clamp(1.9rem, 4vw, 3rem);
+  /* 全称比原来的短品牌名长一倍，字号收一档、折行取均衡断点 */
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  max-width: 16ch;
+  text-wrap: balance;
   font-weight: 700;
   letter-spacing: -0.04em;
   background: var(--gv-grad-text);

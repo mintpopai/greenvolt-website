@@ -145,7 +145,7 @@ async function onSubmit() {
           <label class="consent field--wide">
             <input v-model="form.consent" type="checkbox" />
             <span>
-              I have read and agree to the GreenVolt
+              I have read and agree to the GreenVolt Connect Service
               <!-- 链接在 label 内：不 stop 的话点链接会连带勾上复选框 -->
               <a
                 class="consent__link"

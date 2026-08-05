@@ -117,7 +117,9 @@ onBeforeUnmount(() => {
 
 .preloader__brand {
   font-family: var(--gv-font-display);
-  font-size: clamp(2rem, 6vw, 3.75rem);
+  /* 全称较长：字号收一档并均衡折行，避免窄屏挤成三行 */
+  font-size: clamp(1.7rem, 5vw, 3rem);
+  text-wrap: balance;
   font-weight: 700;
   letter-spacing: -0.04em;
   background: var(--gv-grad-text);

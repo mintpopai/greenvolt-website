@@ -238,6 +238,8 @@ const year = new Date().getFullYear()
   font-family: var(--gv-font-display);
   font-size: 1.05rem;
   letter-spacing: -0.02em;
+  /* 与顶栏一致：公司全称不折行 */
+  white-space: nowrap;
 }
 
 .brand__mark {
@@ -248,6 +250,23 @@ const year = new Date().getFullYear()
   background: var(--gv-grad-volt);
   box-shadow: 0 0 18px rgb(0 224 138 / 45%);
   clip-path: polygon(56% 0, 22% 54%, 46% 54%, 38% 100%, 78% 42%, 52% 42%);
+}
+
+/* 与首页顶栏同策略：窄屏缩字号，极窄屏放开折行，避免全称把顶栏撑出屏幕 */
+@media (max-width: 559.98px) {
+  .brand {
+    font-size: 0.95rem;
+    /* 顶栏高度可自适应：放不下时折行，好过横向溢出 */
+    white-space: normal;
+  }
+}
+
+@media (max-width: 399.98px) {
+  .brand {
+    font-size: 0.9rem;
+    line-height: 1.15;
+    white-space: normal;
+  }
 }
 
 .bar__back {
