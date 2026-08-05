@@ -27,12 +27,6 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Cases', href: '#cases' },
 ]
 
-/** 顶栏右侧的两个产品入口胶囊 */
-export const PRODUCT_PILLS: NavLink[] = [
-  { label: 'LiveGrid', href: '#network' },
-  { label: 'AdSpark', href: '#agents' },
-]
-
 /** Hero 轮播的三条主张，对应底部三个可点胶囊 */
 export interface HeroSlide {
   /** 底部胶囊上的短标签 */
@@ -47,7 +41,7 @@ export const HERO_SLIDES: HeroSlide[] = [
   {
     pill: 'Multimodal models + multi-agent',
     lines: ['Multimodal Models', 'Powering Global Growth'],
-    lead: 'One intelligence layer across research, creative, buying and measurement — live in 190+ markets.',
+    lead: 'One intelligence layer across research, creative, buying and measurement.',
   },
   {
     pill: 'Lead the world to you',
@@ -61,22 +55,21 @@ export const HERO_SLIDES: HeroSlide[] = [
   },
 ]
 
+/** 全站唯一联系方式为邮箱：不列电话、不列办公地点 */
 export const CONTACT = {
   email: 'official@greenvolt.cc',
   press: 'official@greenvolt.cc',
-  phone: '+1 (415) 555-0142',
-  address: 'Singapore · San Francisco · London · Shenzhen',
 } as const
 
 export const FOOTER_LINKS: NavLink[] = [
   { label: 'Volta MLLM', href: '#platform' },
-  { label: 'Circuit Platform', href: '#agents' },
-  { label: 'Media Network', href: '#network' },
+  { label: 'Circuit', href: '#agents' },
+  { label: 'Global Media Network', href: '#network' },
   { label: 'Case Studies', href: '#cases' },
   { label: 'Contact', href: '#contact' },
 ]
 
-export const LEGAL_LINKS: NavLink[] = [
-  { label: 'Privacy Policy', href: '#' },
-  { label: 'Legal Notice', href: '#' },
-]
+/** 法务页面路径：独立文档（非 SPA 锚点），可直接输入 URL 访问 */
+export const LEGAL_PAGE_PATH = '/legal'
+
+export const LEGAL_LINKS: NavLink[] = [{ label: 'Legal & Privacy', href: LEGAL_PAGE_PATH }]

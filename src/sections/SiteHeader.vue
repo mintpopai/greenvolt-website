@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
-import { BRAND, NAV_LINKS, PRODUCT_PILLS } from '@/data/site'
+import { BRAND, NAV_LINKS } from '@/data/site'
 
 /** 固定顶栏：滚动超过一屏高度的 1/6 后收缩为胶囊条；窄屏折叠为抽屉菜单。 */
 
@@ -44,10 +44,6 @@ onBeforeUnmount(() => {
       </nav>
 
       <div class="actions">
-        <a v-for="pill in PRODUCT_PILLS" :key="pill.label" class="pill" :href="pill.href">
-          <span class="pill__dot" aria-hidden="true" />
-          {{ pill.label }}
-        </a>
         <a class="cta" href="#contact">Talk to us</a>
         <button
           class="burger"
@@ -186,36 +182,6 @@ onBeforeUnmount(() => {
   gap: 0.5rem;
 }
 
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.42rem 0.9rem;
-  border: 1px solid var(--gv-border);
-  border-radius: var(--gv-radius-pill);
-  background: var(--gv-glass);
-  font-size: var(--gv-size-micro);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--gv-text-soft);
-  transition:
-    border-color var(--gv-dur-fast) var(--gv-ease),
-    color var(--gv-dur-fast) var(--gv-ease);
-}
-
-.pill:hover {
-  border-color: var(--gv-border-lit);
-  color: var(--gv-text);
-}
-
-.pill__dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--gv-volt);
-  box-shadow: 0 0 8px var(--gv-volt);
-}
-
 .cta {
   padding: 0.5rem 1.15rem;
   border-radius: var(--gv-radius-pill);
@@ -293,10 +259,6 @@ onBeforeUnmount(() => {
 
 @media (max-width: 1179.98px) {
   .brand__text small {
-    display: none;
-  }
-
-  .pill {
     display: none;
   }
 }

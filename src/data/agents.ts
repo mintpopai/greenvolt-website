@@ -21,7 +21,7 @@ export const AGENTS: AgentCard[] = [
     role: 'Reads the market before you enter it',
     capabilities: [
       'In-depth market and category intelligence',
-      'Trending creative radar across 40+ channels',
+      'Trending creative radar across major ad channels',
       'Bespoke go-to-market advisory',
     ],
     glyph: 'RADAR',

@@ -3,7 +3,7 @@ import { reactive, ref, watch } from 'vue'
 
 import { useReveal } from '@/composables/useReveal'
 import { ENQUIRY_TOPICS } from '@/data/cases'
-import { CONTACT } from '@/data/site'
+import { CONTACT, LEGAL_PAGE_PATH } from '@/data/site'
 
 /**
  * 联系表单：目前只做前端校验与提交反馈。
@@ -50,7 +50,7 @@ function validate(): boolean {
   if (!form.email.trim()) errors.email = 'Work email is required'
   else if (!EMAIL_PATTERN.test(form.email.trim())) errors.email = 'That does not look like an email'
   if (!form.topic) errors.topic = 'Pick what you need help with'
-  if (!form.consent) errors.consent = 'Please accept the privacy policy to continue'
+  if (!form.consent) errors.consent = 'Please accept the Legal & Privacy notice to continue'
 
   return Object.keys(errors).length === 0
 }
@@ -99,14 +99,6 @@ async function onSubmit() {
           <div>
             <dt>Press</dt>
             <dd><a :href="`mailto:${CONTACT.press}`">{{ CONTACT.press }}</a></dd>
-          </div>
-          <div>
-            <dt>Phone</dt>
-            <dd>{{ CONTACT.phone }}</dd>
-          </div>
-          <div>
-            <dt>Offices</dt>
-            <dd>{{ CONTACT.address }}</dd>
           </div>
         </dl>
       </div>
@@ -157,7 +149,17 @@ async function onSubmit() {
 
           <label class="consent field--wide">
             <input v-model="form.consent" type="checkbox" />
-            <span>I have read and agree to the GreenVolt privacy policy.</span>
+            <span>
+              I have read and agree to the GreenVolt
+              <!-- 链接在 label 内：不 stop 的话点链接会连带勾上复选框 -->
+              <a
+                class="consent__link"
+                :href="LEGAL_PAGE_PATH"
+                target="_blank"
+                rel="noopener"
+                @click.stop
+              >Legal &amp; Privacy notice</a>.
+            </span>
           </label>
           <p v-if="errors.consent" class="field__error field--wide">{{ errors.consent }}</p>
 
@@ -306,6 +308,12 @@ async function onSubmit() {
   font-size: var(--gv-size-small);
   color: var(--gv-text-soft);
   cursor: pointer;
+}
+
+.consent__link {
+  color: var(--gv-volt);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .consent input {

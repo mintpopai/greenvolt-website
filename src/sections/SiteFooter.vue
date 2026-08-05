@@ -14,8 +14,6 @@ const year = new Date().getFullYear()
           <li>
             <a :href="`mailto:${CONTACT.email}`">{{ CONTACT.email }}</a>
           </li>
-          <li>{{ CONTACT.phone }}</li>
-          <li>{{ CONTACT.address }}</li>
         </ul>
       </div>
 

@@ -40,7 +40,7 @@ function step(direction: 1 | -1) {
     <div ref="track" class="voices__track">
       <article
         v-for="voice in TESTIMONIALS"
-        :key="voice.brand"
+        :key="voice.role"
         class="quote"
         :style="{ '--voice-hue': voice.hue }"
       >
@@ -55,15 +55,15 @@ function step(direction: 1 | -1) {
             </svg>
           </span>
           <span>
-            <strong>{{ voice.brand }}</strong>
-            <small>{{ voice.role }}</small>
+            <strong>{{ voice.role }}</strong>
+            <small>{{ voice.context }}</small>
           </span>
         </footer>
       </article>
     </div>
 
     <p class="gv-shell voices__note">
-      Names and quotes on this page are illustrative placeholders.
+      Client quotes are representative and anonymised at client request.
     </p>
   </section>
 </template>

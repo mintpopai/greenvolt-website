@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 
 import { useReveal } from '@/composables/useReveal'
-import { MEDIA_TIERS, NETWORK_STATS } from '@/data/network'
+import { MEDIA_TIERS } from '@/data/network'
 
-/** 全球媒体网络：按核心 / 规模 / 区域三层陈列渠道，配三个规模数字。 */
+/** 全球媒体网络：按核心 / 规模 / 区域三层陈列渠道。 */
 
 const root = ref<HTMLElement | null>(null)
 useReveal(() => root.value)
@@ -24,18 +24,6 @@ useReveal(() => root.value)
           which team owns which login.
         </p>
       </header>
-
-      <div class="network__stats">
-        <div
-          v-for="(stat, index) in NETWORK_STATS"
-          :key="stat.label"
-          class="stat gv-reveal"
-          :style="{ '--reveal-delay': `${index * 90}ms` }"
-        >
-          <strong class="stat__value">{{ stat.value }}</strong>
-          <span class="stat__label">{{ stat.label }}</span>
-        </div>
-      </div>
 
       <div class="network__tiers">
         <section
@@ -92,42 +80,15 @@ useReveal(() => root.value)
   color: var(--gv-text-soft);
 }
 
-/* —— 规模数字 —— */
-
-.network__stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-top: 3.5rem;
-  padding-block: 2rem;
-  border-block: 1px solid var(--gv-border);
-}
-
-.stat__value {
-  display: block;
-  font-family: var(--gv-font-display);
-  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  background: var(--gv-grad-volt);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.stat__label {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: var(--gv-size-small);
-  color: var(--gv-text-mute);
-}
-
 /* —— 渠道分层 —— */
 
 .network__tiers {
   display: grid;
   gap: 2.5rem;
-  margin-top: 3.5rem;
+  /* 数字条撤掉后由这条分隔线接管「简介 / 渠道清单」之间的分层 */
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--gv-border);
 }
 
 .tier {
@@ -182,11 +143,6 @@ useReveal(() => root.value)
 }
 
 @media (max-width: 859.98px) {
-  .network__stats {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-  }
-
   .tier {
     grid-template-columns: 1fr;
     gap: 0.9rem;

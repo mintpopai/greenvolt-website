@@ -4,13 +4,13 @@ import { ref } from 'vue'
 import AuroraBackdrop from '@/components/AuroraBackdrop.vue'
 import AgentsSection from '@/sections/AgentsSection.vue'
 import CasesSection from '@/sections/CasesSection.vue'
+import ClientsSection from '@/sections/ClientsSection.vue'
 import ContactSection from '@/sections/ContactSection.vue'
 import HeroSection from '@/sections/HeroSection.vue'
 import NetworkSection from '@/sections/NetworkSection.vue'
 import PlatformSection from '@/sections/PlatformSection.vue'
 import SiteFooter from '@/sections/SiteFooter.vue'
 import SiteHeader from '@/sections/SiteHeader.vue'
-import StatsSection from '@/sections/StatsSection.vue'
 import TestimonialsSection from '@/sections/TestimonialsSection.vue'
 import ThePreloader from '@/sections/ThePreloader.vue'
 
@@ -30,7 +30,7 @@ const entered = ref(false)
     <PlatformSection />
     <NetworkSection />
     <TestimonialsSection />
-    <StatsSection />
+    <ClientsSection />
     <CasesSection />
     <ContactSection />
   </main>

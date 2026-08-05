@@ -1,6 +1,7 @@
 /**
- * ⚠️ 占位内容 —— 媒体渠道与规模数字均为示例，上线前按真实合作与口径替换。
+ * ⚠️ 占位内容 —— 媒体渠道为示例，上线前按真实合作替换。
  * 渠道名仅作为「我们在这些平台投放」的清单陈列，未声明任何官方代理级别。
+ * 站点不陈列任何无法自证的规模数字（市场数 / 平台数 / 素材量等），不要再加回来。
  */
 
 export interface MediaTier {
@@ -30,30 +31,6 @@ export const MEDIA_TIERS: MediaTier[] = [
     label: 'Regional leaders',
     channels: ['Yandex', 'Naver', 'LINE', 'Shopee Ads', 'Lazada', 'Coupang'],
   },
-]
-
-export interface NetworkStat {
-  value: string
-  label: string
-}
-
-export const NETWORK_STATS: NetworkStat[] = [
-  { value: '6M+', label: 'Digital media assets aggregated' },
-  { value: '190+', label: 'Markets with live delivery' },
-  { value: '40+', label: 'Platforms under one console' },
-]
-
-/** 首页数字条：整体规模 */
-export const HEADLINE_STAT = {
-  value: '80,000+',
-  lines: ['Advertisers served', 'in global expansion'],
-  year: '2025',
-} as const
-
-export const SUPPORT_STATS: NetworkStat[] = [
-  { value: '$2.4B', label: 'Annual ad spend under management' },
-  { value: '1,200+', label: 'Creatives shipped every week' },
-  { value: '24/7', label: 'Autonomous optimisation coverage' },
 ]
 
 /**

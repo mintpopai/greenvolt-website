@@ -51,7 +51,6 @@ useReveal(() => root.value)
 
         <div class="platform__globe gv-reveal" style="--reveal-delay: 60ms">
           <DotGlobe />
-          <p class="platform__globe-label">{{ BRAND.model }} · live in 190+ markets</p>
         </div>
       </div>
     </div>
@@ -85,14 +84,6 @@ useReveal(() => root.value)
 .platform__globe {
   order: 2;
   text-align: center;
-}
-
-.platform__globe-label {
-  margin-top: 1rem;
-  font-size: var(--gv-size-micro);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gv-text-mute);
 }
 
 .facet {
