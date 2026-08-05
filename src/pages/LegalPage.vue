@@ -48,9 +48,9 @@ const year = new Date().getFullYear()
         direction and may change without notice.
       </p>
       <p>
-        Client names, quotations and case examples shown on this site are representative or
-        anonymised. They are used to illustrate the kind of work we do and should not be read as
-        verified performance claims or as statements attributable to any identified company.
+        Quotations shown on this site are anonymised. They are used to illustrate the kind of work we
+        do and should not be read as verified performance claims or as statements attributable to any
+        identified company.
       </p>
     </section>
 

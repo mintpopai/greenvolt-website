@@ -32,30 +32,3 @@ export const MEDIA_TIERS: MediaTier[] = [
     channels: ['Yandex', 'Naver', 'LINE', 'Shopee Ads', 'Lazada', 'Coupang'],
   },
 ]
-
-/**
- * 客户 logo 墙 —— 全部为虚构品牌名，避免伪造真实公司的合作关系。
- * 换成真实客户时请确认已获得授权。
- */
-export const CLIENT_MARQUEE: string[][] = [
-  [
-    'AURELIA',
-    'NORTHBOUND',
-    'PACER',
-    'HOMENEST',
-    'LUMEN STUDIOS',
-    'VELA',
-    'KITEWORKS',
-    'ORCHARD LANE',
-  ],
-  [
-    'MERIDIAN',
-    'SUNBLOCK CO.',
-    'FOLDCRAFT',
-    'ATLAS PLAY',
-    'GOODWEAR',
-    'TIDEPOOL',
-    'NOVA FRESH',
-    'CARBONHILL',
-  ],
-]

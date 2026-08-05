@@ -2,8 +2,7 @@
 import { reactive, ref, watch } from 'vue'
 
 import { useReveal } from '@/composables/useReveal'
-import { ENQUIRY_TOPICS } from '@/data/cases'
-import { CONTACT, LEGAL_PAGE_PATH } from '@/data/site'
+import { CONTACT, ENQUIRY_TOPICS, LEGAL_PAGE_PATH } from '@/data/site'
 
 /**
  * 联系表单：目前只做前端校验与提交反馈。

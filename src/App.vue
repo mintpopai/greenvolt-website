@@ -3,8 +3,6 @@ import { ref } from 'vue'
 
 import AuroraBackdrop from '@/components/AuroraBackdrop.vue'
 import AgentsSection from '@/sections/AgentsSection.vue'
-import CasesSection from '@/sections/CasesSection.vue'
-import ClientsSection from '@/sections/ClientsSection.vue'
 import ContactSection from '@/sections/ContactSection.vue'
 import HeroSection from '@/sections/HeroSection.vue'
 import NetworkSection from '@/sections/NetworkSection.vue'
@@ -30,8 +28,6 @@ const entered = ref(false)
     <PlatformSection />
     <NetworkSection />
     <TestimonialsSection />
-    <ClientsSection />
-    <CasesSection />
     <ContactSection />
   </main>
 

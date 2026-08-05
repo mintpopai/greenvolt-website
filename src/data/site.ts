@@ -24,7 +24,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Agents', href: '#agents' },
   { label: 'Volta MLLM', href: '#platform' },
   { label: 'Network', href: '#network' },
-  { label: 'Cases', href: '#cases' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 /** Hero 轮播的三条主张，对应底部三个可点胶囊 */
@@ -65,8 +65,17 @@ export const FOOTER_LINKS: NavLink[] = [
   { label: 'Volta MLLM', href: '#platform' },
   { label: 'Circuit', href: '#agents' },
   { label: 'Global Media Network', href: '#network' },
-  { label: 'Case Studies', href: '#cases' },
   { label: 'Contact', href: '#contact' },
+]
+
+/** 联系表单里「你需要什么支持」的下拉选项 */
+export const ENQUIRY_TOPICS: string[] = [
+  'Overseas ad account opening',
+  'Managed media buying',
+  'Creator and influencer marketing',
+  'Creative production at scale',
+  'Marketplace and live commerce',
+  'Something else',
 ]
 
 /** 法务页面路径：独立文档（非 SPA 锚点），可直接输入 URL 访问 */
