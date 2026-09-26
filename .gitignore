@@ -6,9 +6,11 @@ dist/
 # 本地工程/编辑器配置不入库
 .idea/
 .claude/
-docs/superpowers/
 .vscode/
 .DS_Store
 
 # 类型检查缓存
 *.tsbuildinfo
+
+# superpowers 工作区（SDD 账本、评审包、brainstorm 稿等临时产物）
+.superpowers/
