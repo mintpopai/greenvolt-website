@@ -29,6 +29,16 @@ function cleanUrls(): Plugin {
 
 export default defineConfig({
   plugins: [vue(), cleanUrls()],
+  // 本地端口段 6230–6239（登记于 ~/.claude/rules/local-dev-ports.md）：
+  // 端口写死 + strictPort，被占用时直接报错退出，不自动换端口
+  server: {
+    port: 6230,
+    strictPort: true,
+  },
+  preview: {
+    port: 6231,
+    strictPort: true,
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
