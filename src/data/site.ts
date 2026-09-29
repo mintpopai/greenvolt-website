@@ -56,9 +56,20 @@ export const HERO_SLIDES: HeroSlide[] = [
   },
 ]
 
-/** 全站唯一联系方式为邮箱：不列电话、不列办公地点 */
+/** 公司通用联系邮箱：不列办公地点 */
 export const CONTACT = {
   email: 'official@greenvolt.cc',
+} as const
+
+/** 联系区展示的对接人：头像放在 src/assets，由组件 import 以便构建时带 hash */
+export const POINT_OF_CONTACT = {
+  name: 'Jack Song',
+  title: 'Business Development',
+  email: 'jack@greenvolt.cc',
+  /** 展示用格式 */
+  phone: '+1 (909) 732-3285',
+  /** tel: 链接用的 E.164 格式 */
+  phoneHref: '+19097323285',
 } as const
 
 export const FOOTER_LINKS: NavLink[] = [

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { reactive, ref, watch } from 'vue'
 
+import contactAvatar from '@/assets/contact-jack-song.jpg'
 import { useReveal } from '@/composables/useReveal'
-import { CONTACT, ENQUIRY_TOPICS, LEGAL_PAGE_PATH } from '@/data/site'
+import { CONTACT, ENQUIRY_TOPICS, LEGAL_PAGE_PATH, POINT_OF_CONTACT } from '@/data/site'
 
 /**
  * 联系表单：目前只做前端校验与提交反馈。
@@ -90,12 +91,45 @@ async function onSubmit() {
           channel mix, creative approach and realistic first-quarter economics — not a deck.
         </p>
 
-        <dl class="contact__facts gv-reveal" style="--reveal-delay: 220ms">
-          <div>
-            <dt>Contact</dt>
-            <dd><a :href="`mailto:${CONTACT.email}`">{{ CONTACT.email }}</a></dd>
+        <div class="poc gv-reveal" style="--reveal-delay: 220ms">
+          <p class="poc__label">Your point of contact</p>
+
+          <div class="poc__person">
+            <img
+              class="poc__avatar"
+              :src="contactAvatar"
+              :alt="`Portrait of ${POINT_OF_CONTACT.name}`"
+              width="76"
+              height="76"
+              loading="lazy"
+              decoding="async"
+            />
+            <div>
+              <p class="poc__name">{{ POINT_OF_CONTACT.name }}</p>
+              <p class="poc__title">{{ POINT_OF_CONTACT.title }}</p>
+            </div>
           </div>
-        </dl>
+
+          <dl class="poc__lines">
+            <div>
+              <dt>Email</dt>
+              <dd>
+                <a :href="`mailto:${POINT_OF_CONTACT.email}`">{{ POINT_OF_CONTACT.email }}</a>
+              </dd>
+            </div>
+            <div>
+              <dt>Phone</dt>
+              <dd>
+                <a :href="`tel:${POINT_OF_CONTACT.phoneHref}`">{{ POINT_OF_CONTACT.phone }}</a>
+              </dd>
+            </div>
+          </dl>
+
+          <p class="poc__general">
+            General enquiries:
+            <a :href="`mailto:${CONTACT.email}`">{{ CONTACT.email }}</a>
+          </p>
+        </div>
       </div>
 
       <div class="card gv-reveal" style="--reveal-delay: 120ms">
@@ -206,28 +240,99 @@ async function onSubmit() {
   color: var(--gv-text-soft);
 }
 
-.contact__facts {
-  display: grid;
-  gap: 1.5rem;
-  margin: 3rem 0 0;
+/* —— 对接人卡片 —— */
+
+.poc {
+  margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--gv-border);
 }
 
-.contact__facts dt {
+.poc__label {
   font-size: var(--gv-size-micro);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gv-text-faint);
 }
 
-.contact__facts dd {
-  margin: 0.5rem 0 0;
+.poc__person {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+.poc__avatar {
+  flex: none;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* 细亮环 + 外圈柔光，和品牌荧光绿呼应 */
+  border: 2px solid var(--gv-ink);
+  box-shadow:
+    0 0 0 1.5px var(--gv-volt),
+    0 0 24px rgb(0 224 138 / 22%);
+}
+
+.poc__name {
+  font-family: var(--gv-font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--gv-text);
+}
+
+.poc__title {
+  margin-top: 0.2rem;
   font-size: var(--gv-size-small);
+  color: var(--gv-text-mute);
+}
+
+.poc__lines {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1.75rem 0 0;
+}
+
+.poc__lines div {
+  display: grid;
+  grid-template-columns: 5.5rem auto;
+  align-items: baseline;
+}
+
+.poc__lines dt {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gv-text-faint);
+}
+
+.poc__lines dd {
+  margin: 0;
+  font-size: var(--gv-size-body);
+}
+
+.poc__lines a {
+  color: var(--gv-volt);
+  transition: opacity var(--gv-dur-fast) var(--gv-ease);
+}
+
+.poc__lines a:hover {
+  opacity: 0.8;
+}
+
+.poc__general {
+  margin-top: 2rem;
+  font-size: var(--gv-size-micro);
+  color: var(--gv-text-faint);
+}
+
+.poc__general a {
   color: var(--gv-text-soft);
 }
 
-.contact__facts a:hover {
+.poc__general a:hover {
   color: var(--gv-volt);
 }
 
